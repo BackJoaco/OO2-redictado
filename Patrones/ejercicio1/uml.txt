@@ -1,0 +1,29 @@
+@startuml
+class Twitter{
+- existeUsuario():boolean
++ eliminarUsuario(): boolean
++ crearUsuario(nombre:String):boolean
+}
+class Usuario{
+- screenName : String
++ <create>Usuario(nombre : String)
++ eliminarTweets()
++ Tweetear(texto:String):boolean
++ ReTweetear(tweet: Tweet)
+}
+abstract class AbstractTweet{
++ <create> AbstractTweet(u:Usuario)
++ getUsuario(): Usuario
+}
+class Tweet{
+- texto : String;
++ <create>Tweet(texto:String)
+}
+class ReTweet{
+}
+Tweet ..|> AbstractTweet
+ReTweet ..|> AbstractTweet
+ReTweet --> "1" Tweet
+Twitter --> "*" Usuario
+Usuario "1" --> "*" AbstractTweet
+@enduml
