@@ -17,7 +17,7 @@ public class Usuario {
     }
 
     public List<AbstractTweet> getTweets(){
-        return getTweets();
+        return this.tweets;
     }
 
     public void eliminarTweets(){

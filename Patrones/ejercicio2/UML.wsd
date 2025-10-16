@@ -1,0 +1,29 @@
+@startuml ejercicio2
+interface Jugada {
++ jugarContra(Jugada otra)
++ jugarContraPiedra(Piedra piedra)
++ jugarContraPapel(Papel papel)
++ jugarContraTijera(Tijera tijera)
+}
+class Piedra {
++ jugarContra(Jugada otra)
++ jugarContraPiedra(Piedra piedra)
++ jugarContraPapel(Papel papel)
++ jugarContraTijera(Tijera tijera)
+}
+class Papel {
++ jugarContra(Jugada otra)
++ jugarContraPiedra(Piedra piedra)
++ jugarContraPapel(Papel papel)
++ jugarContraTijera(Tijera tijera)
+}
+class Tijera {
++ jugarContra(Jugada otra)
++ jugarContraPiedra(Piedra piedra)
++ jugarContraPapel(Papel papel)
++ jugarContraTijera(Tijera tijera)
+}
+Jugada <|.. Piedra
+Jugada <|.. Papel
+Jugada <|.. Tijera
+@enduml

@@ -1,0 +1,63 @@
+@startuml ejercicio6
+abstract Estado{
+    + <create> Estado(c : ToDoItem)
+    # getContext(): ToDoItem
+    + start()
+    + togglePause()
+    + finish()
+    + workedTime()
+    + addComment()
+}
+class Finished{
+    + <Create> Finished(c : ToDoItem)
+    + start()
+    + togglePause()
+    + finish()
+    + workedTime()
+    + addComment()
+}
+class InProgress{
+    + <Create> InPorgress(c : ToDoItem)
+    + start()
+    + togglePause()
+    + finish()
+    + workedTime()
+    + addComment()
+}
+class Paused{
+    + <Create> Paused(c : ToDoItem)
+    + start()
+    + togglePause()
+    + finish()
+    + workedTime()
+    + addComment()
+}
+class Pending{
+    + <Create> Pending(c : ToDoItem)
+    + start()
+    + togglePause()
+    + finish()
+    + workedTime()
+    + addComment()
+}
+class ToDoItem{
+    - nombre: String
+    - comentario : String
+    - duracion : integer
+    + <create> ToDoItem(n : String)
+    + start()
+    + togglePause()
+    + finish()
+    + workedTime(): integer
+    + addComment(comment : String)
+    + setEstado(estado : Estado)
+    + setComment(c : String)
+    + getDuracion(): integer
+    + getNombre(): String
+}
+ToDoItem --> Estado
+Estado <|.. Pending
+Estado <|.. Paused
+Estado <|.. Finished
+Estado <|.. InProgress
+@enduml

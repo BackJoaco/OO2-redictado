@@ -1,0 +1,27 @@
+@startuml ejercicio7
+class Pelicula{
+    - titulo : String
+    - anoEstreno : integer
+    - puntaje : real
+    + <<create>> Pelicula(titulo: String, anoEstreno: integer, puntaje : real)
+    + getTitulo(): String
+    + getAnoEstreno(): integer
+    + getPuntaje(): real
+}
+class Decodificador{
+    + <<create>> Decodificador()
+    + sugerirPeliculas(): Pelicula [0..3]
+    + getPeliculas(): Pelicula[*]
+}   
+interface Criterio{}
+class Novedad{}
+class Similitud{}
+class Puntaje{}
+Criterio <|.. Novedad
+Criterio <|.. Similitud
+Criterio <|.. Puntaje
+Criterio "1" <-- Decodificador
+Decodificador --> "*" Pelicula
+Decodificador --> "*" Pelicula : Reproducidas
+Pelicula "1" --> "0..*" Pelicula : similares
+@enduml

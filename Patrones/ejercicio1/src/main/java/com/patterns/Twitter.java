@@ -12,7 +12,7 @@ public class Twitter {
 
     private boolean existeUsuario(String screenName){
         return this.usuarios.stream()
-                            .anyMatch(u -> u.getScreenName() == screenName);
+                            .anyMatch(u -> u.getScreenName().equals(screenName));
     }
 
     public boolean crearUsuario(String screenName){
@@ -25,7 +25,7 @@ public class Twitter {
 
     public boolean eliminarUsuario(String screenName){
         Usuario u = this.usuarios.stream()
-                                .filter(user -> user.getScreenName().contains(screenName))
+                                .filter(user -> user.getScreenName().equals(screenName))
                                 .findFirst().orElse(null);
         if (u == null) {
             return false;
