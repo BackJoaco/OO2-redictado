@@ -1,0 +1,14 @@
+@startuml ejercicio13
+interface InterTopo{
+    + calcularProporcion(): real
+}
+class Topografia{
+    - valor : integer
+}
+class TopografiaMixta{
+    + <<create>> TopografiaMixta(t1 : InterTopo, t2 : InterTopo, t3 : InterTopo, t4 : InterTopo)
+}
+InterTopo <|.. Topografia
+InterTopo <|.. TopografiaMixta
+TopografiaMixta --> "4" InterTopo
+@enduml

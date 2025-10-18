@@ -23,5 +23,5 @@ Criterio <|.. Puntaje
 Criterio "1" <-- Decodificador
 Decodificador --> "*" Pelicula
 Decodificador --> "*" Pelicula : Reproducidas
-Pelicula "1" --> "0..*" Pelicula : similares
+Pelicula --> "0..*" Pelicula : similares
 @enduml

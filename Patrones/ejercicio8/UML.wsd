@@ -1,0 +1,33 @@
+@startuml ejercicio8
+class Excursion{
+    - nombre : String
+    - fechaInicio : Date
+    - fechaFin : Date
+    - puntoEncuentro : String
+    - costo : real
+    - cupoMinimo : integer
+    - cupoMaximo : integer
+    + <<create>> Excursion(n:String, i:Date, f:Date, p:String, c:real, min:integer, max:integer)
+    + inscribir(u: Usuario)
+    + cambiarEstado(e : Estado)
+    + obtenerInformacion(): String
+}
+class Usuario {
+    - email : String
+    - nombre : String
+    - apellido : String
+}
+abstract Estado {
+    + <<abstract>> inscribir(u : Usuario)
+    + <<abstract>> obtenerInformacion(): String
+}
+class Provisoria {}
+class Definitiva {}
+class Negocion {}
+Estado <|-- Provisoria
+Estado <|-- Definitiva
+Estado <|-- Negocion
+Excursion -- Estado
+Usuario "*" <-- Excursion : inscriptos
+Usuario "0..*" <-- Excursion : listaEspera
+@enduml
