@@ -1,0 +1,42 @@
+@startuml e
+class Afiliado {
+    - nombre : String
+    - familiarACargo : integer
+    - salario : real
+    - fechaNacimiento : Date
+    + calcularMonto() : real
+    + setPlanMedico(plan : PlanMedico)
+}
+abstract PlanMedico{
+    - fechaContratacion : Date
+    + getFechaContratacion(): Date
+    + limitePrestacion(): integer
+    + calcularCostoMensual() : real
+}
+class PlanObligatorio{
+    + calcularCostoMensual() : real
+}
+class PlanIntegral{
+    - seguroInternacion : boolean
+    + calcularCostoMensual() : real 
+}
+class PlanPremium{
+    - seguroInternacion : boolean
+    + calcularCostoMensual() : real
+}
+class Coseguro{
+    - nombre : String
+    - ingreso : Date
+    - descuento : integer
+    - montoCoberturaViajes : real
+    + getDescuento(): real
+    + getAntiguedad(): integer
+    + getMontoCoberturaViajes(): real
+}
+Afiliado --> "1" PlanMedico : "plan"
+Afiliado --> "*" PlanMedico : "previos"
+Afiliado --> "0..1" Coseguro : "coseguro"
+PlanMedico <|-- PlanObligatorio
+PlanMedico <|-- PlanIntegral
+PlanMedico <|-- PlanPremium 
+@enduml
